@@ -25,18 +25,26 @@ export default function PomodoroApp() {
   const [displayedTasks, setDisplayedTasks] = useState<Task[]>([]);
 
   const [timerType, setTimerType] = useState<TimerType>(() => {
-    return (localStorage.getItem('timerType') as TimerType) || 'pomodoro';
+        if (typeof window !== "undefined") {
+      return (localStorage.getItem('timerType') as TimerType) || 'pomodoro';
+    }
+    return 'pomodoro';
   });
 
   const [customMinutes, setCustomMinutes] = useState<number>(() => {
-    const stored = localStorage.getItem('customMinutes');
-    return stored ? parseInt(stored, 10) : 30;
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem('customMinutes');
+      return stored ? parseInt(stored, 10) : 30;
+    }
+    return 30;
   });
 
   const [currentSubject, setCurrentSubject] = useState<SubjectType>(() => {
-    return (localStorage.getItem('currentSubject') as SubjectType) || '';
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem('currentSubject') as SubjectType) || '';
+    }
+    return '';
   });
-
 
   // UI state
   const [showSettings, setShowSettings] = useState<boolean>(false);
@@ -97,7 +105,12 @@ export default function PomodoroApp() {
     } else {
       setTimeLeft(customMinutes * 60);
     }
-    localStorage.setItem('timerType', type);
+
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        localStorage.setItem('timerType', type);
+      }
+    }, [type])
   };
 
   const toggleSubject = (subject: SubjectType): void => {
@@ -193,17 +206,22 @@ export default function PomodoroApp() {
   }, [isActive, timeLeft, exitFullscreen]);
 
   useEffect(() => {
-    localStorage.setItem('timerType', timerType);
+    if (typeof window !== "undefined") {
+      localStorage.setItem('timerType', timerType);
+    }
   }, [timerType]);
 
   useEffect(() => {
-    localStorage.setItem('customMinutes', customMinutes.toString());
+    if (typeof window !== "undefined") {
+      localStorage.setItem('customMinutes', customMinutes.toString());
+    }
   }, [customMinutes]);
 
   useEffect(() => {
-    localStorage.setItem('currentSubject', currentSubject);
+    if (typeof window !== "undefined") {
+      localStorage.setItem('currentSubject', currentSubject);
+    }
   }, [currentSubject]);
-
 
   const subjects: SubjectType[] = ['Physics', 'Chemistry', 'Maths'];
 

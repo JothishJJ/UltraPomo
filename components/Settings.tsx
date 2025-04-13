@@ -1,5 +1,7 @@
 "use client"
 
+import { useEffect, useState } from "react";
+
 type SubjectType = 'Physics' | 'Chemistry' | 'Maths' | '';
 type TimerType = 'pomodoro' | 'ultradian' | 'custom';
 
@@ -28,6 +30,16 @@ const Settings: React.FC<SettingsProps> = ({
   setCustomMinutes,
   setTimeLeft,
 }) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Ensures this component only renders on the client
+  }, []);
+
+  if (!isClient) {
+    return null; // Prevent rendering on the server
+  }
+
   return (
     <>
       <div className="flex justify-between items-center mb-4">
