@@ -42,13 +42,13 @@ const Settings: React.FC<SettingsProps> = ({
 
   return (
     <>
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
+        <h2 className="text-lg sm:text-xl font-semibold text-center sm:text-left">
           {currentSubject || 'Select Subject'}
         </h2>
         <button
           onClick={() => setShowSettings(!showSettings)}
-          className="text-gray-400 hover:text-white"
+          className="text-gray-400 hover:text-white mt-2 sm:mt-0"
         >
           ⚙️ {showSettings ? 'Hide Settings' : 'Settings'}
         </button>
@@ -58,11 +58,11 @@ const Settings: React.FC<SettingsProps> = ({
         <div className="mb-6 p-4 bg-gray-700 rounded-lg">
           <div className="mb-4">
             <h3 className="text-sm text-gray-400 mb-2">Subject</h3>
-            <div className="flex justify-between gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {subjects.map(subject => (
                 <button
                   key={subject}
-                  className={`flex-1 py-2 rounded-lg text-sm ${currentSubject === subject
+                  className={`py-2 rounded-lg text-sm ${currentSubject === subject
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-600 hover:bg-gray-500'
                     }`}
@@ -76,9 +76,9 @@ const Settings: React.FC<SettingsProps> = ({
 
           <div>
             <h3 className="text-sm text-gray-400 mb-2">Timer Type</h3>
-            <div className="flex justify-between gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               <button
-                className={`flex-1 py-2 rounded-lg text-sm ${timerType === 'pomodoro'
+                className={`py-2 rounded-lg text-sm ${timerType === 'pomodoro'
                   ? 'bg-blue-600 text-white'
                   : 'bg-gray-600 hover:bg-gray-500'
                   }`}
@@ -87,7 +87,7 @@ const Settings: React.FC<SettingsProps> = ({
                 Pomodoro (25m)
               </button>
               <button
-                className={`flex-1 py-2 rounded-lg text-sm ${timerType === 'ultradian'
+                className={`py-2 rounded-lg text-sm ${timerType === 'ultradian'
                   ? 'bg-blue-600 text-white'
                   : 'bg-gray-600 hover:bg-gray-500'
                   }`}
@@ -96,7 +96,7 @@ const Settings: React.FC<SettingsProps> = ({
                 Ultradian (90m)
               </button>
               <button
-                className={`flex-1 py-2 rounded-lg text-sm ${timerType === 'custom'
+                className={`py-2 rounded-lg text-sm ${timerType === 'custom'
                   ? 'bg-blue-600 text-white'
                   : 'bg-gray-600 hover:bg-gray-500'
                   }`}

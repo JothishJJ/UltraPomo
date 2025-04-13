@@ -227,49 +227,49 @@ export default function PomodoroApp() {
 
   if (isFullscreen && isActive) {
     return (
-      <div className="w-full h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-6">
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-4 sm:p-6">
         <div className="flex-1 flex flex-col items-center justify-center">
-          <h2 className="text-2xl mb-4">
+          <h2 className="text-xl sm:text-2xl mb-4 text-center">
             {currentSubject || 'Unassigned'} - {timerType === 'pomodoro' ? 'Pomodoro' : timerType === 'ultradian' ? 'Ultradian Sprint' : 'Custom'}
           </h2>
-          <div className="rounded-full border-8 border-gray-700 h-80 w-80 flex items-center justify-center mb-8">
-            <h1 className="text-8xl font-bold">{formatTime(timeLeft)}</h1>
+          <div className="rounded-full border-8 border-gray-700 h-64 w-64 sm:h-80 sm:w-80 flex items-center justify-center mb-6 sm:mb-8">
+            <h1 className="text-6xl sm:text-8xl font-bold">{formatTime(timeLeft)}</h1>
           </div>
 
           <button
-            className="bg-red-600 text-white text-xl font-bold py-4 px-12 rounded-lg mb-10"
+            className="bg-red-600 text-white text-lg sm:text-xl font-bold py-3 px-8 sm:py-4 sm:px-12 rounded-lg mb-8 sm:mb-10"
             onClick={toggleTimer}
           >
             Pause
           </button>
         </div>
 
-        <div className="w-full max-w-2xl mb-8">
-          <h2 className="text-2xl mb-4">
+        <div className="w-full max-w-md sm:max-w-2xl mb-6 sm:mb-8">
+          <h2 className="text-xl sm:text-2xl mb-4 text-center sm:text-left">
             Tasks {currentSubject ? `(${currentSubject})` : '(All)'}
           </h2>
 
-          <div className="max-h-64 overflow-y-auto space-y-3">
+          <div className="max-h-48 sm:max-h-64 overflow-y-auto space-y-3">
             {displayedTasks.length === 0 ? (
               <p className="text-gray-500 text-center py-4">No tasks yet</p>
             ) : (
               displayedTasks.map(task => (
                 <div
                   key={task.id}
-                  className="flex items-center justify-between p-4 bg-gray-800 rounded-lg"
+                  className="flex items-center justify-between p-3 sm:p-4 bg-gray-800 rounded-lg"
                 >
-                  <div className="flex items-center gap-3 flex-1">
+                  <div className="flex items-center gap-2 sm:gap-3 flex-1">
                     <input
                       type="checkbox"
                       checked={task.completed}
                       onChange={() => toggleTask(task.id)}
-                      className="h-6 w-6"
+                      className="h-5 w-5 sm:h-6 sm:w-6"
                     />
-                    <span className={task.completed ? 'line-through text-gray-400 text-xl' : 'text-xl'}>
+                    <span className={task.completed ? 'line-through text-gray-400 text-lg sm:text-xl' : 'text-lg sm:text-xl'}>
                       {task.text}
                     </span>
                   </div>
-                  <span className="text-sm px-3 py-1 bg-gray-700 rounded-full">
+                  <span className="text-xs sm:text-sm px-2 sm:px-3 py-1 bg-gray-700 rounded-full">
                     {task.subject}
                   </span>
                 </div>
@@ -277,7 +277,7 @@ export default function PomodoroApp() {
             )}
           </div>
 
-          <div className="text-center mt-6 text-gray-400">
+          <div className="text-center mt-4 sm:mt-6 text-gray-400">
             Press ESC or Pause to exit fullscreen mode
           </div>
         </div>
@@ -286,8 +286,8 @@ export default function PomodoroApp() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900 text-gray-200">
-      <div className="w-full max-w-md p-6 rounded-xl bg-gray-800 shadow-lg">
+    <div className="flex items-center justify-center min-h-screen bg-gray-900 text-gray-200 p-4 sm:p-6">
+      <div className="w-full max-w-sm sm:max-w-md p-4 sm:p-6 rounded-xl bg-gray-800 shadow-lg">
         <Settings
           showSettings={showSettings}
           subjects={subjects}

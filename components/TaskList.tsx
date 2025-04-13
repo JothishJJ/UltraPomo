@@ -16,7 +16,7 @@ interface TaskListProps {
 const TaskList: React.FC<TaskListProps> = ({ displayedTasks, toggleTask, deleteTask }) => {
   return (
     <div>
-      <h2 className="text-xl mb-4">
+      <h2 className="text-lg sm:text-xl mb-4 text-center sm:text-left">
         Tasks {displayedTasks.length > 0 && displayedTasks[0].subject ? `(${displayedTasks[0].subject})` : '(All)'}
       </h2>
       <div className="max-h-60 overflow-y-auto space-y-2">
@@ -26,7 +26,7 @@ const TaskList: React.FC<TaskListProps> = ({ displayedTasks, toggleTask, deleteT
           displayedTasks.map(task => (
             <div
               key={task.id}
-              className="flex items-center justify-between p-3 bg-gray-700 rounded-lg"
+              className="flex flex-col sm:flex-row items-center justify-between p-3 bg-gray-700 rounded-lg"
             >
               <div className="flex items-center gap-3 flex-1 min-w-0">
                 <input
@@ -39,7 +39,7 @@ const TaskList: React.FC<TaskListProps> = ({ displayedTasks, toggleTask, deleteT
                   {task.text}
                 </span>
               </div>
-              <div className="flex items-center gap-2 flex-shrink-0">
+              <div className="flex items-center gap-2 flex-shrink-0 mt-2 sm:mt-0">
                 <span className="text-xs px-2 py-1 bg-gray-600 rounded-full">
                   {task.subject}
                 </span>

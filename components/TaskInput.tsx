@@ -16,6 +16,10 @@ const TaskInput: React.FC<TaskInputProps> = ({ newTask, handleInputChange, handl
         placeholder="Add a task"
         value={newTask}
         onChange={handleInputChange}
+
+        /**
+         * TODO: Remove the decripted use of the onKeyPress event
+         */
         onKeyPress={handleKeyPress}
       />
       <button

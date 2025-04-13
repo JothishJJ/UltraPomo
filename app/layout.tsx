@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UltraPomo",
-  description: "The JEE ultransprint/pomodoro timer used by all the toppers study effectively that aligns with your goals.",
+  title: "UltraPomo: A Full Screen Timer",
+  description: "The JEE ultransprint/pomodoro full screen timer used by all the toppers study effectively that aligns with your goals. Helps you from being distracted and study effecievely.",
 };
 
 export default function RootLayout({
